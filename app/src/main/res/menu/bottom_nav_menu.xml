@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Quote"
+        android:icon="@drawable/ic_quote"
+        android:id="@+id/quote"/>
+    <!--<item android:title="Diary"
+        android:icon="@drawable/ic_diary"
+        android:id="@+id/diaryRecord"/>-->
+    <item android:title="Summary"
+        android:icon="@drawable/ic_diary"
+        android:id="@+id/summary"/>
+
+</menu>

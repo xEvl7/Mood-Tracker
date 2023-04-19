@@ -38,7 +38,7 @@ public class ForgetPassword extends AppCompatActivity {
         backLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.Login.class);
+                Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.Login.class);
                 startActivity(intent);
                 finish();
             }

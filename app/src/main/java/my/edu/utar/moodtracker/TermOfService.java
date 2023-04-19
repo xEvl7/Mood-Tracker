@@ -31,7 +31,7 @@ public class TermOfService extends AppCompatActivity {
         backSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.Settings.class);
+                Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.Settings.class);
                 startActivity(intent);
                 finish();
             }

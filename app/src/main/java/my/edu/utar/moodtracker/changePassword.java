@@ -50,7 +50,7 @@ public class changePassword extends AppCompatActivity {
         backInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.AccountInformation.class);
+                Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                 startActivity(intent);
                 finish();
             }
@@ -99,7 +99,7 @@ public class changePassword extends AppCompatActivity {
                         if (oldPassword.equals(oldPasswordFireBased)) {
                             userRef.child(user.getUid()).child("password").setValue(newPassword); // set new password
                             Toast.makeText(changePassword.this, "Username is updated.", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.AccountInformation.class);
+                            Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                             startActivity(intent);
                             finish();
 

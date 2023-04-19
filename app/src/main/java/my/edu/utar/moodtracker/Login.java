@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.Register.class);
+                Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.Register.class);
                 startActivity(intent);
                 finish();
             }

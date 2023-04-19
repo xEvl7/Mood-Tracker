@@ -134,7 +134,7 @@ public class LoginPin extends AppCompatActivity {
         forgotPinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.pinLockSettings.class);
+                Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.pinLockSettings.class);
                 startActivity(intent);
                 finish();
             }

@@ -48,7 +48,7 @@ public class changeUsername extends AppCompatActivity {
         backInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.AccountInformation.class);
+                Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                 startActivity(intent);
                 finish();
             }
@@ -75,7 +75,7 @@ public class changeUsername extends AppCompatActivity {
                             // Update the username in Firebase
                             userRef.child(user.getUid()).child("username").setValue(newUsername);
                             Toast.makeText(changeUsername.this, "Username is updated.", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.AccountInformation.class);
+                            Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                             startActivity(intent);
                             finish();
                         }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:background="@drawable/theme_background"
+    tools:context=".Login">
+
+    <ImageView
+        android:layout_width="86dp"
+        android:layout_height="115dp"
+        android:src="@drawable/logo"
+        android:background="@drawable/rounded_corner" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:layout_marginBottom="30dp"
+        android:textStyle="italic"
+        android:textSize="27sp"/>
+
+    <TextView
+        android:text="@string/email2"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailLog"
+            android:padding="10dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="20dp"
+            android:textStyle="italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:text="@string/password2"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordLog"
+            android:padding="10dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:textStyle="italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:textStyle="italic"
+        android:textSize="13sp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/forgetPassword"
+        android:textColor="@color/black"
+        android:text="@string/forget_password"
+        android:layout_marginLeft="180dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="68dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:textStyle="italic"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/registerNow"
+        android:textColor="@color/black"
+        android:text="@string/if_don_t_have_an_account_please_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

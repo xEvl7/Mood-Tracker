@@ -1,6 +1,35 @@
 <resources>
     <string name="app_name">Mood Tracker</string>
-
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome</string>
+    <string name="createAccount">Create Account</string>
+    <string name="username">Username : </string>
+    <string name="email2">Email :</string>
+    <string name="userid">User ID : </string>
+    <string name="password2">Password:</string>
+    <string name="tnp">Agree Term of privacy</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="if_don_t_have_an_account_please_sign_up">if don\'t have an account, please sign up~</string>
+    <string name="logout">Logout</string>
+    <string name="uploadProfile">Select or upload your profile picture</string>
+    <string name="profileLink">Select or Upload your profile picture</string>
+    <string name="account_information">Account Information</string>
+    <string name="customize">Customize :</string>
+    <string name="SAI">Service and Information :</string>
+    <string name="bnr"><![CDATA[Data Backup & Restore]]></string>
+    <string name="pin_lock">PIN Lock</string>
+    <string name="reminder_settings">Reminder Settings</string>
+    <string name="theme_settings">Theme Settings</string>
+    <string name="help">Help</string>
+    <string name="term_of_service">Term of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="register">Register</string>
+    <string name="username2">Username</string>
+    <string name="user_id">User ID</string>
+    <string name="changeUserNameNoti">Please enter your new username :</string>
+    <string name="forget_password">Forget Password ???</string>
     <string name="diary_menu_picture">Insert picture</string>
     <string name="diary_menu_emoji">Insert emoji&amp;sticker</string>
 </resources>

@@ -44,7 +44,7 @@
             android:name=".diaryPage"
             android:exported="false"
             android:parentActivityName=".mainPage" />
-        <!--
+
         <activity
             android:name=".LoginPin"
             android:exported="false" />
@@ -63,7 +63,7 @@
         <activity
             android:name=".Help"
             android:exported="false" />
-        -->
+
         <activity
             android:name=".ReminderSettings"
             android:exported="false" />

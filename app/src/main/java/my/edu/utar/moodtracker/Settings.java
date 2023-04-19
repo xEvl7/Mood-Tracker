@@ -1,5 +1,11 @@
 package my.edu.utar.moodtracker;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> origin/master
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+=======
+>>>>>>> origin/master
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,7 +61,11 @@ public class Settings extends AppCompatActivity {
         userRef = rootRef.child("Users");
 
         if(user == null){
+<<<<<<< HEAD
             Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.Login.class);
+=======
+            Intent intent = new Intent(getApplicationContext(),Login.class);
+>>>>>>> origin/master
             startActivity(intent);
             finish();
         }else{
@@ -75,7 +88,11 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+=======
+                Intent intent = new Intent(getApplicationContext(),Login.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+>>>>>>> origin/master
                 startActivity(intent);
                 finish();
             }
@@ -84,7 +101,11 @@ public class Settings extends AppCompatActivity {
         accountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.AccountInformation.class);
+=======
+                Intent intent = new Intent(getApplicationContext(),AccountInformation.class);
+>>>>>>> origin/master
                 startActivity(intent);
                 finish();
             }
@@ -93,7 +114,11 @@ public class Settings extends AppCompatActivity {
         pinLockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.pinLockSettings.class);
+=======
+                Intent intent = new Intent(getApplicationContext(),pinLockSettings.class);
+>>>>>>> origin/master
                 startActivity(intent);
                 finish();
             }
@@ -111,7 +136,11 @@ public class Settings extends AppCompatActivity {
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), com.example.moodtracker.Help.class);
+=======
+                Intent intent = new Intent(getApplicationContext(),Help.class);
+>>>>>>> origin/master
                 startActivity(intent);
                 finish();
             }

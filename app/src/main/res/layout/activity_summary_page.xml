@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SummaryPage"
+    android:background ="#FED5CF">
+
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width = "match_parent"
+            android:layout_height = "60dp"
+            android:gravity ="center"
+            android:text ="Diary Summary"
+            android:textColor = "#000000"
+            android:textSize="40dp"/>
+
+        <TextView
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:layout_margin="30dp"
+            android:gravity ="center"
+            android:text ="Week Summary"
+            android:textColor = "#E91E63"
+            android:textSize="30dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+        <TextView
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp"
+            android:layout_margin="30dp"
+            android:gravity ="center"
+            android:text ="Month Summary"
+            android:textColor = "#E91E63"
+            android:textSize="30dp"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart"
+            android:layout_width="match_parent"
+            android:layout_height="550dp" />
+
+        <TextView
+            android:layout_width = "match_parent"
+            android:layout_height = "30dp"
+            android:layout_margin="20dp"
+            android:gravity ="center" />
+
+    </LinearLayout>
+
+</ScrollView>

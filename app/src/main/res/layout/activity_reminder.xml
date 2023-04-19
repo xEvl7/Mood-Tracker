@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Reminder">
+
+    <TextView
+        android:id="@+id/daily_reminder_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Dairy Reminder"
+        android:textSize="25dp"
+        android:textAppearance="?android:textAppearanceLarge" />
+
+    <TimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daily_reminder_label"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/set_daily_reminder_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_picker"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        android:background="@color/black"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:text="Set Reminder" />
+
+    <Button
+        android:id="@+id/cancel_daily_reminder_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/set_daily_reminder_button"
+        android:layout_marginTop="16dp"
+        android:background="@color/black"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:text="Cancel Reminder"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FED5CF"
+    tools:context=".diaryPage">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="358dp"
+        android:layout_height="484dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/moodSelectedImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="104dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="105dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/moodSelectedText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/moodSelectedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="92dp"
+                android:text="MOODNAME"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="79dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="80dp"
+                android:background="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/moodSelectedText" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DATE"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.083"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.241" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/diaryTitleInputText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:hint="What's your story about?"
+                    android:scrollbars="vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- <TextView
+                android:id="@+id/contentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Here is where you write your story...."
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.388" />-->
+
+            <!-- <android.support.constraint.ConstraintLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="319dp"
+                android:layout_height="440dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="21dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contentText"
+                app:layout_constraintVertical_bias="1.0">
+
+            </android.support.constraint.ConstraintLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="320dp"
+                android:layout_height="363dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/diaryContentInputText"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:autofillHints="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="start|top"
+                    android:hint="Start to write your story..."
+                    android:inputType="textLongMessage|textAutoCorrect|textMultiLine|text"
+                    android:singleLine="false"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:verticalScrollbarPosition="right" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="78dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/black"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        app:itemIconTint="#000000"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_diary_page" />
+
+    <Button
+        android:id="@+id/loadButton"
+        android:layout_width="83dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/black"
+        android:text="Load"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="94dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/black"
+        android:text="Delete"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/saveButton"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

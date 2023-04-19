@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="my.edu.utar.moodtracker">
-
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -19,19 +18,19 @@
         android:roundIcon="@mipmap/logo2"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoodTracker">
+        <activity
+            android:name=".quotePage"
+            android:exported="false"
+            android:parentActivityName=".mainPage" />
 
-        <receiver android:name="my.edu.utar.moodtracker.ReminderReceiver" />
+        <receiver android:name=".ReminderReceiver" />
 
         <activity
             android:name=".Reminder"
             android:exported="false"
-            android:parentActivityName="my.edu.utar.moodtracker.mainPage"/>
-        <activity
-            android:name=".SummaryPage"
-            android:exported="false"
             android:parentActivityName=".mainPage" />
         <activity
-            android:name=".quotePage"
+            android:name=".SummaryPage"
             android:exported="false"
             android:parentActivityName=".mainPage" />
         <activity
@@ -45,7 +44,8 @@
             android:name=".diaryPage"
             android:exported="false"
             android:parentActivityName=".mainPage" />
-<!--        <activity
+        <!--
+        <activity
             android:name=".LoginPin"
             android:exported="false" />
         <activity
@@ -62,34 +62,11 @@
             android:exported="false" />
         <activity
             android:name=".Help"
-            android:exported="false" />-->
+            android:exported="false" />
+        -->
         <activity
             android:name=".ReminderSettings"
             android:exported="false" />
-<!--        <activity
-            android:name=".changePassword"
-            android:exported="false" />
-        <activity
-            android:name=".changeUsername"
-            android:exported="false" />
-        <activity
-            android:name=".AccountInformation"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Settings"
-            android:exported="true" />-->
     </application>
 
 </manifest>

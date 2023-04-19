@@ -7,4 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightblue">#89CFF0</color>
+    <color name="buttoncolor">#36454F</color>
+    <color name="light_orange">#FFDEAD</color>
+
+    <!--    calendar-->
+    <color name="calendar_date_text_color">#000000</color>
+    <color name="calendar_weekday_text_color">#808080</color>
+    <color name="calendar_header_text_color">#000000</color>
+
+    <color name="bg">#000000</color>
+    <color name="bg_white">#ecf0f1</color>
+    <color name="red">#c0392b</color>
+    <color name="orange">#FF5733</color>
+    <color name="yellow">#FAFA33</color>
+    <color name="green">#b6ff75</color>
+    <color name="blue">#1F51FF</color>
+    <color name="purple">#C3B1E1</color>
+
 </resources>

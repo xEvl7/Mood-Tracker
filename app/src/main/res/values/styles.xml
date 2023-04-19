@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    Number-->
+    <style name="CalendarDate" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/calendar_date_text_color</item>
+    </style>
+
+    <!--    Week-->
+    <style name="CalendarWeek" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/calendar_weekday_text_color</item>
+    </style>
+
+    <!--    Year-->
+    <style name="CalendarHeader" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/calendar_header_text_color</item>
+    </style>
+
+    <!--    Selected Date Background-->
+    <style name="CalendarViewTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">#FF4081</item> <!-- Set the desired background color -->
+    </style>
+
+
+
+
+</resources>

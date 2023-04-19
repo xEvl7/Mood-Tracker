@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background: #5372F0; */
+    background-image: url('land.png');
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+
+}
+
+.wrapper{
+    width: 325px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px 30px 25px;
+}
+
+
+.wrapper .content{
+    margin: 25px 0;
+}
+
+.content .quote-area{
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+}
+
+.quote-area i{
+    font-size: 10px;
+}
+
+.quote-area i:first-child{
+    margin: 2px 5px 0 0;
+}
+
+.quote-area i:last-child{
+    display: flex;
+    align-items: flex-end;
+    margin: 0 0 2px 5px;
+}
+
+.quote-area .quote{
+    font-size: 20px;
+    text-align: center;
+}
+
+.content .author{
+    display: flex;
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 15px;
+    justify-content: flex-end;
+}
+
+.author span:first-child{
+    margin: -7px 5px 0 0;
+    font-family: monospace;
+}
+
+.wrapper .buttons{
+    border-top: 1px solid #ccc;
+}
+
+.buttons .features{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.features ul{
+    display: flex;
+}
+
+.features ul li{
+    list-style: none;
+    margin: 0 5px;
+    height: 47px;
+    width: 47px;
+    display: flex;
+    color:#5372F0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #5372F0;
+    transition: all 0.3s ease;
+}
+
+.features ul li:hover{
+    color: #fff;
+    background: #5372F0;
+}
+
+.features button{
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    font-style: 16px;
+    padding: 13px 22px;
+    border-radius: 30px;
+    background: #5372F0;
+    font-size: 18px;
+
+}
+
+button.loading{
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+
+/* css header */
+.wrapper .q{
+    color:#111;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Baloo Thambi', cursive;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.wrapper .q > span{
+    animation: glow 4.25s ease-in-out infinite;
+}
+@keyframes glow{
+    0%, 100%{
+        color: #fff;
+        text-shadow: 0 0 12px #71d9e6, 0 0 50px rgb(255, 0, 0), 0 0 100px rgb(255, 0, 13);
+    }
+    10%, 100%{
+        color: #9e0ab8;
+        text-shadow:none;
+    }
+}
+
+.wrapper .q> span:nth-child(2){
+    animation-delay: 0.25s ;
+}
+.wrapper .q> span:nth-child(3){
+    animation-delay: 0.5s;
+}
+.wrapper .q> span:nth-child(4){
+    animation-delay: 0.75s;
+}
+.wrapper .q> span:nth-child(5){
+    animation-delay: 1s;
+}
+.wrapper .q> span:nth-child(6){
+    animation-delay: 1.25s;
+}
+.wrapper .q> span:nth-child(7){
+    animation-delay: 1.5s;
+}
+.wrapper .q> span:nth-child(8){
+    animation-delay: 1.75s;
+}
+.wrapper .q> span:nth-child(9){
+    animation-delay: 2s;
+}
+.wrapper .q> span:nth-child(10){
+    animation-delay: 2.25s;
+}
+.wrapper .q> span:nth-child(11){
+    animation-delay: 2.5s;
+}
+.wrapper .q> span:nth-child(12){
+    animation-delay: 2.75s;
+}
+.wrapper .q> span:nth-child(13){
+    animation-delay: 3s;
+}
+.wrapper .q> span:nth-child(14){
+    animation-delay: 3.25s;
+}
+.wrapper .q> span:nth-child(15){
+    animation-delay: 3.5s;
+}
+.wrapper .q> span:nth-child(16){
+    animation-delay: 4s;
+}

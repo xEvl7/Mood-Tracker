@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "646928346400",
+    "project_id": "userauthorisation-300e8",
+    "storage_bucket": "userauthorisation-300e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646928346400:android:f045d59e8a3698dd4cfb45",
+        "android_client_info": {
+          "package_name": "my.edu.utar.moodtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646928346400-8drvn2as67kvfmaccc8h8i7he6c5mkef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtJonCeDwWNJpB0bxh-4HVdtBDduGFfYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646928346400-8drvn2as67kvfmaccc8h8i7he6c5mkef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

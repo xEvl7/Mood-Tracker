@@ -8,6 +8,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,7 @@ public class pickMood extends AppCompatActivity {
     private ImageView backSettingsButton;
 
     private MediaPlayer mp;
+    Animation topA, midA, botA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,10 @@ public class pickMood extends AppCompatActivity {
         Shared.initialize(getBaseContext());
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.btn_sound);
+
+        topA = AnimationUtils.loadAnimation(this, R.anim.top_anim);
+        midA = AnimationUtils.loadAnimation(this, R.anim.middle_anim);
+        botA = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
 
         backSettingsButton = findViewById(R.id.backSettings);
 
@@ -80,6 +87,14 @@ public class pickMood extends AppCompatActivity {
         mehFace = findViewById(R.id.mehEmoji);
         sadFace = findViewById(R.id.sadEmoji);
         speechlessFace = findViewById(R.id.speechlessEmoji);
+
+        happyFace.setAnimation(midA);
+        angryFace.setAnimation(midA);
+        anxiousFace.setAnimation(midA);
+        confuseFace.setAnimation(midA);
+        mehFace.setAnimation(midA);
+        sadFace.setAnimation(midA);
+        speechlessFace.setAnimation(midA);
 
         happyFace.setOnClickListener(v -> {
             mp.start();

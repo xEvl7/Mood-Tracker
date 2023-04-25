@@ -244,26 +244,103 @@ public class diaryPage extends AppCompatActivity {
                     String diaryTitle = ((TextInputEditText) findViewById(R.id.diaryTitleInputText)).getText().toString();
                     String diaryContent = ((TextInputEditText) findViewById(R.id.diaryContentInputText)).getText().toString();
 
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    String[] projection = {
+                            Diary.DiaryEntry._ID,
+                            Diary.DiaryEntry.COLUMN_TITLE,
+                            Diary.DiaryEntry.COLUMN_CONTENT,
+                            Diary.DiaryEntry.COLUMN_SELECTED_DATE,
+                            Diary.DiaryEntry.COLUMN_SELECTED_EMOJI
+                    };
 
-                    ContentValues values = new ContentValues();
-                    values.put(Diary.DiaryEntry.COLUMN_SELECTED_DATE, selectedDate);
-                    values.put(Diary.DiaryEntry.COLUMN_SELECTED_EMOJI, selectedEmoji);
-                    values.put(Diary.DiaryEntry.COLUMN_TITLE, diaryTitle);
-                    values.put(Diary.DiaryEntry.COLUMN_CONTENT, diaryContent);
+                    String selection = null;
+                    String[] selectionArgs = null;
 
-                    long newRowId = db.insert(Diary.DiaryEntry.TABLE_NAME, null, values);
+                    String sortOrder =
+                            Diary.DiaryEntry.COLUMN_SELECTED_DATE + " DESC";
 
-                    if (newRowId == -1) {
-                        Toast.makeText(diaryPage.this, "Error: Failed to save data to database", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(diaryPage.this, "Saved! Live in the moment! \nMy Friend!", Toast.LENGTH_SHORT).show();
+                    try (SQLiteDatabase db = dbHelper.getReadableDatabase()) {
+                        Cursor cursor = db.query(
+                                Diary.DiaryEntry.TABLE_NAME,   // The table to query
+                                projection,                                 // The columns to return
+                                selection,                                  // The columns for the WHERE clause
+                                selectionArgs,                              // The values for the WHERE clause
+                                null,                                // Don't group the rows
+                                null,                                 // Don't filter by row groups
+                                sortOrder                                   // The sort order
+                        );
+
+                        while (cursor.moveToNext()) {
+                            int id = cursor.getInt(
+                                    cursor.getColumnIndexOrThrow(Diary.DiaryEntry._ID));
+                            String dateStr = cursor.getString(
+                                    cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_SELECTED_DATE)); //2023/04/18
+                            String emojiStr = cursor.getString(
+                                    cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_SELECTED_EMOJI));
+                            String titleStr = cursor.getString(
+                                    cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_TITLE));
+                            String contentStr = cursor.getString(
+                                    cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_CONTENT));
+                            if (dateStr.equals(selectedDate)) {
+                                DiaryEXIST= true;
+                                break;
+                            }
+                            else
+                                DiaryEXIST= false;
+                        }
+                        cursor.close();
+                    } catch (SQLException e) {
+                        // handle exception
                     }
 
-                    Intent intent = new Intent(diaryPage.this, mainPage.class);
-                    startActivity(intent);
-                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    finish();
+                    if(DiaryEXIST == false) {
+                        Toast.makeText(diaryPage.this, "New record will be saved...\nMy Friend!", Toast.LENGTH_SHORT).show();
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                        ContentValues values = new ContentValues();
+                        values.put(Diary.DiaryEntry.COLUMN_SELECTED_DATE, selectedDate);
+                        values.put(Diary.DiaryEntry.COLUMN_SELECTED_EMOJI, selectedEmoji);
+                        values.put(Diary.DiaryEntry.COLUMN_TITLE, diaryTitle);
+                        values.put(Diary.DiaryEntry.COLUMN_CONTENT, diaryContent);
+
+                        long newRowId = db.insert(Diary.DiaryEntry.TABLE_NAME, null, values);
+
+                        if (newRowId == -1) {
+                            Toast.makeText(diaryPage.this, "Error: Failed to save data to database", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(diaryPage.this, "Saved! Live in the moment! \nMy Friend!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        Intent intent = new Intent(diaryPage.this, mainPage.class);
+                        startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        finish();
+
+                    } else {
+                        Toast.makeText(diaryPage.this, "Your record already exist!\nUpdate your record...\nMy Friend!", Toast.LENGTH_SHORT).show();
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                        ContentValues values = new ContentValues();
+                        //values.put(Diary.DiaryEntry.COLUMN_SELECTED_DATE, selectedDate);
+                        //values.put(Diary.DiaryEntry.COLUMN_SELECTED_EMOJI, selectedEmoji);
+                        values.put(Diary.DiaryEntry.COLUMN_TITLE, diaryTitle);
+                        values.put(Diary.DiaryEntry.COLUMN_CONTENT, diaryContent);
+
+                        String strFilter = "date='" + selectedDate +"'";
+
+                        long newRowId = db.update(Diary.DiaryEntry.TABLE_NAME, values, strFilter, null);
+
+                        if (newRowId == -1) {
+                            Toast.makeText(diaryPage.this, "Error: Failed to save data to database", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(diaryPage.this, "Updated! Live in the moment! \nMy Friend!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        Intent intent = new Intent(diaryPage.this, mainPage.class);
+                        startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        finish();
+                    }
+
                 }
 
             }

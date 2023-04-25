@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
@@ -44,6 +46,8 @@ public class mainPage extends AppCompatActivity {
 
     private MediaPlayer mp;
 
+    Animation anim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +57,11 @@ public class mainPage extends AppCompatActivity {
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.btn_sound);
 
+        anim = AnimationUtils.loadAnimation(this, R.anim.btn_anim);
+
         //2)Calendar
         addBtn = (Button) findViewById(R.id.addButton);
+        addBtn.setAnimation(anim);
 
         settingBtn = findViewById(R.id.settingBtn);
 
@@ -104,6 +111,7 @@ public class mainPage extends AppCompatActivity {
             public void onClick(View v) {
 
                 mp.start();
+
                 String selectedDate = tvMainPage.getText().toString();
 
                 String[] projection = {

@@ -163,7 +163,7 @@
             android:id="@+id/pinLock"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="236dp"
+            android:layout_marginStart="226dp"
             android:src="@drawable/arrow"/>
     </LinearLayout>
 

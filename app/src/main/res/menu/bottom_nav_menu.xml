@@ -4,9 +4,11 @@
     <item android:title="Quote"
         android:icon="@drawable/ic_quote"
         android:id="@+id/quote"/>
+
     <!--<item android:title="Diary"
         android:icon="@drawable/ic_diary"
         android:id="@+id/diaryRecord"/>-->
+
     <item android:title="Summary"
         android:icon="@drawable/ic_diary"
         android:id="@+id/summary"/>

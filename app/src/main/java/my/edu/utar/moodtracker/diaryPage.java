@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -34,7 +35,7 @@ public class diaryPage extends AppCompatActivity {
     private EditText contentDiary;
 
     private AppCompatButton saveAll;
-    private AppCompatButton loadAll;
+    //private AppCompatButton loadAll;
     private AppCompatButton deleteAll;
 
     private TextView tvDate;
@@ -52,36 +53,24 @@ public class diaryPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary_page);
+        Shared.initialize(getBaseContext());
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.btn_sound);
 
         backSettingsButton = findViewById(R.id.backSettings);
 
-        backSettingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), mainPage.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
-            }
-        });
-
-        Shared.initialize(getBaseContext());
-
-        mp = MediaPlayer.create(getApplicationContext(), R.raw.btn_sound);
-
-
         titleDiary = findViewById(R.id.diaryTitleInputText);
         contentDiary = findViewById(R.id.diaryContentInputText);
+        saveAll = findViewById(R.id.saveButton);
+        //loadAll = findViewById(R.id.loadButton);
+        deleteAll = findViewById(R.id.deleteButton);
+        emojiImage = findViewById(R.id.moodSelectedImage);
+
+        DiaryDBHelper dbHelper = new DiaryDBHelper(diaryPage.this);
 
         titleDiary.setTypeface(Shared.fontRegular);
         contentDiary.setTypeface(Shared.fontRegular);
-
-        saveAll = findViewById(R.id.saveButton);
-        loadAll = findViewById(R.id.loadButton);
-        deleteAll = findViewById(R.id.deleteButton);
-
         saveAll.setTypeface(Shared.fontRegular);
-        loadAll.setTypeface(Shared.fontRegular);
+        //loadAll.setTypeface(Shared.fontRegular);
         deleteAll.setTypeface(Shared.fontRegular);
 
         // Get selectedDate and selectedEmoji from previous
@@ -95,18 +84,84 @@ public class diaryPage extends AppCompatActivity {
         tvEmoji.setText(selectedEmojiDiary + "~");
         tvEmoji.setTypeface(Shared.fontRegular);
 
-        emojiImage = findViewById(R.id.moodSelectedImage);
-
         byte[] byteArray = getIntent().getByteArrayExtra("emojiImage");
         Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         emojiImage.setImageBitmap(bitmap);
 
-        BottomNavigationView bottomView = findViewById(R.id.bottomNavigationView2);
+        String selectedDate = getIntent().getStringExtra("selectedDate");
 
-        //contentLayout = findViewById(R.id.contentLayout);
+        backSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mainPage.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        });
+
+        String[] projection = {
+                Diary.DiaryEntry._ID,
+                Diary.DiaryEntry.COLUMN_TITLE,
+                Diary.DiaryEntry.COLUMN_CONTENT,
+                Diary.DiaryEntry.COLUMN_SELECTED_DATE,
+                Diary.DiaryEntry.COLUMN_SELECTED_EMOJI
+        };
+
+        String selection = null;
+        String[] selectionArgs = null;
+
+        String sortOrder =
+                Diary.DiaryEntry.COLUMN_SELECTED_DATE + " DESC";
+
+        List<Diary.DiaryEntry> entries = new ArrayList<>();
+
+        try (SQLiteDatabase db = dbHelper.getReadableDatabase()) {
+            Cursor cursor = db.query(
+                    Diary.DiaryEntry.TABLE_NAME,   // The table to query
+                    projection,                                 // The columns to return
+                    selection,                                  // The columns for the WHERE clause
+                    selectionArgs,                              // The values for the WHERE clause
+                    null,                                // Don't group the rows
+                    null,                                 // Don't filter by row groups
+                    sortOrder                                   // The sort order
+            );
+
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry._ID));
+                String dateStr = cursor.getString(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_SELECTED_DATE)); //2023/04/18
+                String emojiStr = cursor.getString(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_SELECTED_EMOJI));
+                String title = cursor.getString(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_TITLE));
+                String content = cursor.getString(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_CONTENT));
+
+                if (dateStr.equals(selectedDate)) {
+                    DiaryEXIST = true;
+                    titleDiary.setText(title);
+                    contentDiary.setText(content);
+                    break;
+                }
+                else
+                    DiaryEXIST = false;
+            }
+            cursor.close();
+        } catch (SQLException e) {
+            // handle exception
+        }
+
+        if(DiaryEXIST == false)
+            Toast.makeText(diaryPage.this, "Yay you can create new record!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(diaryPage.this, "Loaded! Here is your record...\nMy Friend!\nNow you can edit it!", Toast.LENGTH_SHORT).show();
+
+
+       /* BottomNavigationView bottomView = findViewById(R.id.bottomNavigationView2);
 
         //bottom navigation for 1.Insert picture button 2.Emoji & Sticker button
-
         bottomView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 //case R.id.item1:
@@ -114,7 +169,7 @@ public class diaryPage extends AppCompatActivity {
                 //TextView inputText = new TextView(this);
                 //inputText.setText("Hello, World!");
 
-/*
+*//*
                     // create a new AlertDialog builder
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -147,7 +202,7 @@ public class diaryPage extends AppCompatActivity {
 
                     // show the dialog
                     AlertDialog dialog = builder.create();
-                    dialog.show();*/
+                    dialog.show();*//*
 
 
 
@@ -168,9 +223,7 @@ public class diaryPage extends AppCompatActivity {
                 default:
                     return false;
             }
-        });
-
-        DiaryDBHelper dbHelper = new DiaryDBHelper(diaryPage.this);
+        });*/
 
         saveAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,7 +269,7 @@ public class diaryPage extends AppCompatActivity {
             }
         });
 
-        loadAll.setOnClickListener(new View.OnClickListener() {
+       /* loadAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -282,7 +335,7 @@ public class diaryPage extends AppCompatActivity {
                     Toast.makeText(diaryPage.this, "Loaded! Here is your record...\nMy Friend!", Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
 
         deleteAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -357,9 +410,14 @@ public class diaryPage extends AppCompatActivity {
                     } catch (SQLException e) {
                         // handle exception
                     }
-                    Toast.makeText(diaryPage.this, "Deleted! \nMy Friend!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(diaryPage.this, "Deleted! \nMy Friend!\nNow you can select another mood for it!", Toast.LENGTH_SHORT).show();
                     titleDiary.setText("");
                     contentDiary.setText("");
+
+                    Intent intent = new Intent(diaryPage.this, pickMood.class);
+                    intent.putExtra("selectedDate", selectedDate);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 }
             }
         });

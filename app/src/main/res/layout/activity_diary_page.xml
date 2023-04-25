@@ -189,36 +189,17 @@
 
     </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/saveButton"
-        android:layout_width="78dp"
-        android:layout_height="44dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button2"
-        android:text="Save"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView2"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@color/white"
         app:itemIconTint="#000000"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_diary_page" />
+        app:menu="@menu/menu_diary_page" />-->
 
-    <androidx.appcompat.widget.AppCompatButton
+  <!--  <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loadButton"
         android:layout_width="83dp"
         android:layout_height="42dp"
@@ -235,23 +216,41 @@
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+-->
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/deleteButton"
-        android:layout_width="94dp"
-        android:layout_height="43dp"
+        android:id="@+id/saveButton"
+        android:layout_width="78dp"
+        android:layout_height="44dp"
         android:layout_gravity="center"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/button2"
-        android:text="Delete"
+        android:text="Save"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
+        app:layout_constraintBottom_toTopOf="@+id/deleteButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/saveButton"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="60dp"
+        android:background="@color/pink"
+        android:text="@string/deleteRecordText"
+        android:textAllCaps="false"
+        android:textColor="@color/ferra"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

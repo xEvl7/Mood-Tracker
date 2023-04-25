@@ -34,4 +34,5 @@
     <string name="diary_menu_emoji">Insert emoji&amp;sticker</string>
     <string name="splashTitleName">Mood Tracker</string>
     <string name="splashSlogan">Don\'t give up on your emotions!</string>
+    <string name="deleteRecordText"><u>Click here if you wish to <b>delete</b> your record</u></string>
 </resources>

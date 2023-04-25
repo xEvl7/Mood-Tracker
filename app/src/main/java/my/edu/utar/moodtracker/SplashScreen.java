@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
     ImageView logo;
     TextView slogan;
 
-    private static int SPLASH_SCREEN = 3000;
+    private static int SPLASH_SCREEN = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

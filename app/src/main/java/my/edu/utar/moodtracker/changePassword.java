@@ -52,6 +52,7 @@ public class changePassword extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
         });
@@ -101,6 +102,7 @@ public class changePassword extends AppCompatActivity {
                             Toast.makeText(changePassword.this, "Username is updated.", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                             startActivity(intent);
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             finish();
 
                         } else {

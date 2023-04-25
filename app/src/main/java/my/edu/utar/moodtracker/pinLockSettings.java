@@ -150,6 +150,7 @@ public class pinLockSettings extends AppCompatActivity {
                         Toast.makeText(pinLockSettings.this, "PinLock is updated.", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), Settings.class);
                         startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
                     }
 

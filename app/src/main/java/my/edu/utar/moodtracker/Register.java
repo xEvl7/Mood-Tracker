@@ -38,6 +38,7 @@ public class Register extends AppCompatActivity {
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), Settings.class);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
     }
@@ -59,6 +60,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
         });
@@ -131,6 +133,7 @@ public class Register extends AppCompatActivity {
                                                                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                                                             Intent intent = new Intent(getApplicationContext(), pinLockSettings.class);
                                                                             startActivity(intent);
+                                                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                                                             Toast.makeText(Register.this,"Sign Up successfully.",Toast.LENGTH_SHORT).show();
                                                                         }else{
                                                                             //fail to sign up

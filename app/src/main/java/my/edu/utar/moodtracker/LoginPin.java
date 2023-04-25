@@ -136,6 +136,7 @@ public class LoginPin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.pinLockSettings.class);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
         });
@@ -161,12 +162,14 @@ public class LoginPin extends AppCompatActivity {
                             Toast.makeText(LoginPin.this, "Welcome.", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(), mainPage.class);
                             startActivity(intent);
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             finish();
 
                         } else {
                             Toast.makeText(LoginPin.this, "The pin is not matched.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), LoginPin.class);
                             startActivity(intent);
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             finish();
                         }
                     }

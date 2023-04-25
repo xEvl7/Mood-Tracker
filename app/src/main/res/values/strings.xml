@@ -32,4 +32,6 @@
     <string name="forget_password">Forget Password ???</string>
     <string name="diary_menu_picture">Insert picture</string>
     <string name="diary_menu_emoji">Insert emoji&amp;sticker</string>
+    <string name="splashTitleName">Mood Tracker</string>
+    <string name="splashSlogan">Don\'t give up on your emotions!</string>
 </resources>

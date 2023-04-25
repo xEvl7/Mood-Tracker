@@ -19,66 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoodTracker">
 
-        <receiver android:name="my.edu.utar.moodtracker.ReminderReceiver" />
-
         <activity
-            android:name="my.edu.utar.moodtracker.Reminder"
-            android:exported="false"
-            android:parentActivityName="my.edu.utar.moodtracker.mainPage"/>
-        <activity
-            android:name="my.edu.utar.moodtracker.SummaryPage"
-            android:exported="false"
-            android:parentActivityName="my.edu.utar.moodtracker.mainPage" />
-        <activity
-            android:name="my.edu.utar.moodtracker.quotePage"
-            android:exported="false"
-            android:parentActivityName="my.edu.utar.moodtracker.mainPage" />
-        <activity
-            android:name="my.edu.utar.moodtracker.pickMood"
-            android:exported="false"
-            android:parentActivityName="my.edu.utar.moodtracker.mainPage" />
-        <activity
-            android:name="my.edu.utar.moodtracker.mainPage"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.diaryPage"
-            android:exported="false"
-            android:parentActivityName="my.edu.utar.moodtracker.mainPage" />
-        <activity
-            android:name="my.edu.utar.moodtracker.LoginPin"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.pinLockSettings"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.ForgetPassword"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.PrivacyPolicy"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.TermOfService"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.Help"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.ReminderSettings"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.changePassword"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.changeUsername"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.AccountInformation"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.Register"
-            android:exported="false" />
-        <activity
-            android:name="my.edu.utar.moodtracker.Login"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -86,8 +28,63 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".ReminderReceiver" />
+
         <activity
-            android:name="my.edu.utar.moodtracker.Settings"
+            android:name=".Reminder"
+            android:exported="false" />
+        <activity
+            android:name=".SummaryPage"
+            android:exported="false" />
+        <activity
+            android:name=".quotePage"
+            android:exported="false" />
+        <activity
+            android:name=".pickMood"
+            android:exported="false" />
+        <activity
+            android:name=".mainPage"
+            android:exported="false" />
+        <activity
+            android:name=".diaryPage"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".LoginPin"
+            android:exported="false" />
+        <activity
+            android:name=".pinLockSettings"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacyPolicy"
+            android:exported="false" />
+        <activity
+            android:name=".TermOfService"
+            android:exported="false" />
+        <activity
+            android:name=".Help"
+            android:exported="false" />
+        <activity
+            android:name=".changePassword"
+            android:exported="false" />
+        <activity
+            android:name=".changeUsername"
+            android:exported="false" />
+        <activity
+            android:name=".AccountInformation"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".Settings"
             android:exported="true" />
     </application>
 

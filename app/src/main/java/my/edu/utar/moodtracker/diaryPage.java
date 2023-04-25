@@ -1,6 +1,7 @@
 package my.edu.utar.moodtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -32,9 +33,9 @@ public class diaryPage extends AppCompatActivity {
     private EditText titleDiary;
     private EditText contentDiary;
 
-    private Button saveAll;
-    private Button loadAll;
-    private Button deleteAll;
+    private AppCompatButton saveAll;
+    private AppCompatButton loadAll;
+    private AppCompatButton deleteAll;
 
     private TextView tvDate;
     private TextView tvEmoji;
@@ -79,9 +80,9 @@ public class diaryPage extends AppCompatActivity {
         loadAll = findViewById(R.id.loadButton);
         deleteAll = findViewById(R.id.deleteButton);
 
-        saveAll.setTypeface(Shared.fontBold);
-        loadAll.setTypeface(Shared.fontBold);
-        deleteAll.setTypeface(Shared.fontBold);
+        saveAll.setTypeface(Shared.fontRegular);
+        loadAll.setTypeface(Shared.fontRegular);
+        deleteAll.setTypeface(Shared.fontRegular);
 
         // Get selectedDate and selectedEmoji from previous
         String selectedDateDiary = getIntent().getStringExtra("selectedDate");

@@ -18,15 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import my.edu.utar.moodtracker.AccountInformation;
-import my.edu.utar.moodtracker.Help;
-import my.edu.utar.moodtracker.Login;
-import my.edu.utar.moodtracker.PrivacyPolicy;
-import my.edu.utar.moodtracker.ReminderSettings;
-import my.edu.utar.moodtracker.TermOfService;
-import my.edu.utar.moodtracker.mainPage;
-import my.edu.utar.moodtracker.pinLockSettings;
-
 //Done by Khor Jia Jun 2101593
 public class Settings extends AppCompatActivity {
 

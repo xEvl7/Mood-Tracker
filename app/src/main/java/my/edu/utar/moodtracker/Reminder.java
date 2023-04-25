@@ -1,6 +1,7 @@
 package my.edu.utar.moodtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,21 +12,33 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import my.edu.utar.moodtracker.utils.Shared;
+
 public class Reminder extends AppCompatActivity {
 
     private DailyReminder mDailyReminder;
     private TimePicker mTimePicker;
     private ImageView backSettingsButton;
 
+    private AppCompatButton setBtn, cancelBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
+        Shared.initialize(getBaseContext());
 
         TextView tvReminder = findViewById(R.id.daily_reminder_label);
 
+        setBtn = findViewById(R.id.set_daily_reminder_button);
+        cancelBtn = findViewById(R.id.cancel_daily_reminder_button);
+
+        setBtn.setTypeface(Shared.fontRegular);
+        cancelBtn.setTypeface(Shared.fontRegular);
+
         mDailyReminder = new DailyReminder(this);
         mTimePicker = findViewById(R.id.time_picker);
+
         backSettingsButton = findViewById(R.id.backSettings);
 
         backSettingsButton.setOnClickListener(new View.OnClickListener() {

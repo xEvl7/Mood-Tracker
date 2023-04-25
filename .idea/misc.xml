@@ -3,8 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Mood-Tracker/app/src/main/res/layout/activity_main_page.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mood-Tracker/app/src/main/res/layout/activity_quote_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/button.xml" value="0.29010416666666666" />
         <entry key="..\:/Users/weisim/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/box.xml" value="0.33240740740740743" />
         <entry key="..\:/Users/weisim/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/button.xml" value="0.33240740740740743" />
         <entry key="..\:/Users/weisim/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_account_information.xml" value="0.2957427536231884" />
@@ -13,6 +12,11 @@
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_main_page.xml" value="0.1403985507246377" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_pick_mood.xml" value="0.1403985507246377" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_reminder.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_reminder_settings.xml" value="0.1306760847628658" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_settings.xml" value="0.1306760847628658" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/menu/bottom_nav_menu.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/menu/menu_diary_page.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/menu/menu_setting.xml" value="0.26979166666666665" />
       </map>
     </option>
   </component>

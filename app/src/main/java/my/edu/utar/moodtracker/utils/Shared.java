@@ -17,7 +17,7 @@ public final class Shared {
     public static void initialize(Context base) {
 
         instance = new ContextWrapper(base);
-        pref = instance.getSharedPreferences("com.example.moodtracker", Context.MODE_PRIVATE);
+        pref = instance.getSharedPreferences("my.edu.utar.moodtracker", Context.MODE_PRIVATE);
 
         fontRegular = Typeface.createFromAsset(instance.getAssets(),"fonts/SourceSansPro-Regular.ttf");
         fontBold = Typeface.createFromAsset(instance.getAssets(),"fonts/SourceSansPro-Bold.ttf");

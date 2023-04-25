@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ public class pickMood extends AppCompatActivity {
     //Variable
     String selectedEmoji;
 
+    private ImageView backSettingsButton;
+
     private MediaPlayer mp;
 
     @Override
@@ -41,12 +44,21 @@ public class pickMood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_mood);
 
-        //backNavigation
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Shared.initialize(getBaseContext());
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.btn_sound);
+
+        backSettingsButton = findViewById(R.id.backSettings);
+
+        backSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mainPage.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        });
 
         //Show today Date
         String selectedDate = getIntent().getStringExtra("selectedDate");

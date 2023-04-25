@@ -3,17 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/button.xml" value="0.29010416666666666" />
         <entry key="..\:/Users/weisim/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/box.xml" value="0.33240740740740743" />
         <entry key="..\:/Users/weisim/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/button.xml" value="0.33240740740740743" />
         <entry key="..\:/Users/weisim/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_account_information.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_diary_page.xml" value="0.1284056508577195" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/add_button2.xml" value="0.2844739530132789" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/border.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/box.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/button.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/ic_back.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/ic_diary.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/ic_quote.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/ic_setting.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/drawable/theme_background.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_account_information.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_change_password.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_change_username.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_diary_page.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_forget_password.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_help.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_login.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_login_pin.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_main_page.xml" value="0.1403985507246377" />
-        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_pick_mood.xml" value="0.1403985507246377" />
-        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_reminder.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_main_page.xml" value="0.22" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_pick_mood.xml" value="0.25" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_pin_lock_settings.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_privacy_policy.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_quote_page.xml" value="0.2971071149335418" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_register.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_reminder.xml" value="0.22" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_reminder_settings.xml" value="0.1306760847628658" />
-        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_settings.xml" value="0.1306760847628658" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_settings.xml" value="0.22" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_summary_page.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_term_of_service.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/layout/activity_theme_settings.xml" value="0.16077898550724637" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/menu/bottom_nav_menu.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/menu/menu_diary_page.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/xevl7/AndroidStudioProjects/Mood-Tracker/app/src/main/res/menu/menu_setting.xml" value="0.26979166666666665" />

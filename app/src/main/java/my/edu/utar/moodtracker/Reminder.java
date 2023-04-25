@@ -2,9 +2,11 @@ package my.edu.utar.moodtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -13,6 +15,7 @@ public class Reminder extends AppCompatActivity {
 
     private DailyReminder mDailyReminder;
     private TimePicker mTimePicker;
+    private ImageView backSettingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,17 @@ public class Reminder extends AppCompatActivity {
 
         mDailyReminder = new DailyReminder(this);
         mTimePicker = findViewById(R.id.time_picker);
+        backSettingsButton = findViewById(R.id.backSettings);
+
+        backSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Settings.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        });
 
         Button setReminderButton = findViewById(R.id.set_daily_reminder_button);
         setReminderButton.setOnClickListener(new View.OnClickListener() {

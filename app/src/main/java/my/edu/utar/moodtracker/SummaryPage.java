@@ -1,12 +1,15 @@
 package my.edu.utar.moodtracker;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -41,13 +44,28 @@ public class SummaryPage extends AppCompatActivity {
     PieChart totalEmojiChart;
     private ArrayList<PieEntry> numEmoji = null;
 
+    private ImageView backSettingsButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary_page);
 
-        //backNavigation
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        /*//backNavigation
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+
+        backSettingsButton = findViewById(R.id.backSettings);
+
+        backSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mainPage.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        });
 
         dbHelper = new DiaryDBHelper(this);
         database = dbHelper.getWritableDatabase();

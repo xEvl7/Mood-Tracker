@@ -47,7 +47,7 @@
         android:columnCount="3"
         android:rowCount="3">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_1"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -56,7 +56,7 @@
             android:background="@drawable/round_button"
             android:text="1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_2"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -65,7 +65,7 @@
             android:background="@drawable/round_button"
             android:text="2" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_3"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -74,7 +74,7 @@
             android:background="@drawable/round_button"
             android:text="3" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_4"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -83,7 +83,7 @@
             android:background="@drawable/round_button"
             android:text="4" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_5"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -92,7 +92,7 @@
             android:background="@drawable/round_button"
             android:text="5" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_6"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -101,7 +101,7 @@
             android:background="@drawable/round_button"
             android:text="6" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_7"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -110,7 +110,7 @@
             android:background="@drawable/round_button"
             android:text="7" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_8"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -119,7 +119,7 @@
             android:background="@drawable/round_button"
             android:text="8" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_9"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -128,21 +128,21 @@
             android:background="@drawable/round_button"
             android:text="9" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_removeDigit"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/round_button"
             android:text="DEL" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_0"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/round_button"
             android:text="0" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginPin"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -152,15 +152,15 @@
     </GridLayout>
 
     <TextView
-        android:textStyle="italic"
-        android:gravity="center"
-        android:textSize="13sp"
-        android:layout_marginTop="25dp"
         android:id="@+id/forgotPin"
-        android:textColor="@color/black"
-        android:text="Forgot pin???"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:text="Forgot pin???"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="italic" />
 
 
 </LinearLayout>

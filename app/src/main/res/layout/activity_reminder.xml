@@ -3,7 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="#FED5CF"
     tools:context=".Reminder">
+
+    <ImageView
+        android:id="@+id/backSettings"
+        android:layout_width="30dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_back" />
 
     <TextView
         android:id="@+id/daily_reminder_label"
@@ -19,32 +27,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/daily_reminder_label"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="25dp"
+        android:background="@color/white" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/set_daily_reminder_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/time_picker"
         android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:background="@color/black"
+        android:background="@drawable/button"
+        android:text="Set Reminder"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="18dp"
-        android:text="Set Reminder" />
+        android:textSize="18dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancel_daily_reminder_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/set_daily_reminder_button"
+        android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:background="@color/black"
+        android:background="@drawable/button"
+        android:text="Cancel Reminder"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="18dp"
-        android:text="Cancel Reminder"
-        android:layout_centerInParent="true" />
+        android:textSize="18dp" />
 
 </RelativeLayout>

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,9 +34,10 @@ public class mainPage extends AppCompatActivity {
 
     //2)Calendar
     private Button addBtn;
+    private ImageView settingBtn;
 
-    TextView tvMainPage;
-    CalendarView cvMainPage;
+    private TextView tvMainPage;
+    private CalendarView cvMainPage;
 
     boolean exist = false;
     String selectedEmoji;
@@ -51,10 +53,10 @@ public class mainPage extends AppCompatActivity {
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.btn_sound);
 
-        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         //2)Calendar
         addBtn = (Button) findViewById(R.id.addButton);
+
+        settingBtn = findViewById(R.id.settingBtn);
 
         DiaryDBHelper dbHelper = new DiaryDBHelper(mainPage.this);
 
@@ -84,6 +86,16 @@ public class mainPage extends AppCompatActivity {
                 }
                 String formattedDate = outputFormat.format(date1);
                 tvMainPage.setText(formattedDate);
+            }
+        });
+
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Settings.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
             }
         });
 
@@ -285,7 +297,7 @@ public class mainPage extends AppCompatActivity {
 
 
 
-    //1) Setting
+/*    //1) Setting
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_setting, menu);
         return true;
@@ -305,26 +317,7 @@ public class mainPage extends AppCompatActivity {
             return true;
         }
 
-        else if (item_id == R.id.reminder) {
-
-           /* mTimePicker = findViewById(R.id.time_picker);
-            mReminder = new Reminder(this);
-
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 20); // Reminder time is 8 PM
-            calendar.set(Calendar.MINUTE, 0);
-            calendar.set(Calendar.SECOND, 0);
-            calendar.set(Calendar.MILLISECOND, 0);
-            mReminder.setReminder(calendar);*/
-
-            Intent intentReminder = new Intent(mainPage.this, Reminder.class);
-            startActivity(intentReminder);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
-            return true;
-        }
-
         return false;
-    }
+    }*/
 
 }

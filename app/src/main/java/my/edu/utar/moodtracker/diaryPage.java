@@ -40,6 +40,8 @@ public class diaryPage extends AppCompatActivity {
     private TextView tvEmoji;
     private ImageView emojiImage;
 
+    private ImageView backSettingsButton;
+
     private MediaPlayer mp;
 
     boolean DiaryEXIST = false;
@@ -50,12 +52,17 @@ public class diaryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary_page);
 
-        //back navigation
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        backSettingsButton = findViewById(R.id.backSettings);
 
-        //getSupportActionBar().hide();
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        backSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mainPage.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        });
 
         Shared.initialize(getBaseContext());
 

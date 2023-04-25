@@ -13,11 +13,6 @@
                 android:icon="@drawable/ic_setting"
                 app:showAsAction="never"/>
 
-            <item
-                android:id="@+id/reminder"
-                android:title="Reminder"
-                android:icon="@drawable/ic_reminder"
-                app:showAsAction="never"/>
         </menu>
 
     </item>

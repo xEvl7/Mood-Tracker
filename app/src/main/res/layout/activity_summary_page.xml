@@ -25,6 +25,7 @@
             android:src="@drawable/arrow" />
 
         <TextView
+            android:id="@+id/tv1"
             android:layout_width = "match_parent"
             android:layout_height = "60dp"
             android:gravity ="center"
@@ -33,6 +34,7 @@
             android:textSize="40dp"/>
 
         <TextView
+            android:id="@+id/tv2"
             android:layout_width = "match_parent"
             android:layout_height = "50dp"
             android:layout_margin="30dp"
@@ -47,6 +49,7 @@
             android:layout_height="400dp" />
 
         <TextView
+            android:id="@+id/tv3"
             android:layout_width = "match_parent"
             android:layout_height = "50dp"
             android:layout_margin="30dp"
@@ -61,6 +64,7 @@
             android:layout_height="550dp" />
 
         <TextView
+            android:id="@+id/tv4"
             android:layout_width = "match_parent"
             android:layout_height = "30dp"
             android:layout_margin="20dp"

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -31,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import my.edu.utar.moodtracker.utils.Shared;
+
 public class SummaryPage extends AppCompatActivity {
 
     private static final String TAG = "DataSummaryActivity";
@@ -46,6 +49,10 @@ public class SummaryPage extends AppCompatActivity {
 
     private ImageView backSettingsButton;
 
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+    private TextView tv4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,16 @@ public class SummaryPage extends AppCompatActivity {
 
         /*//backNavigation
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+
+        tv1 = findViewById(R.id.tv1);
+        tv2 = findViewById(R.id.tv2);
+        tv3 = findViewById(R.id.tv3);
+        tv4 = findViewById(R.id.tv4);
+
+        tv1.setTypeface(Shared.fontBold);
+        tv2.setTypeface(Shared.fontRegular);
+        tv3.setTypeface(Shared.fontRegular);
+        tv4.setTypeface(Shared.fontLight);
 
         backSettingsButton = findViewById(R.id.backSettings);
 

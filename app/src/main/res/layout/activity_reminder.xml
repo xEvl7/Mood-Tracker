@@ -11,7 +11,8 @@
         android:layout_width="30dp"
         android:layout_height="47dp"
         android:layout_marginStart="10dp"
-        android:src="@drawable/ic_back" />
+        android:scaleX="-1"
+        android:src="@drawable/arrow" />
 
     <TextView
         android:id="@+id/daily_reminder_label"
@@ -19,16 +20,17 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Dairy Reminder"
-        android:textSize="25dp"
-        android:textAppearance="?android:textAppearanceLarge" />
+        android:layout_marginTop="5dp"
+        android:textStyle="italic"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="27dp" />
 
     <TimePicker
         android:id="@+id/time_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/daily_reminder_label"
-        android:layout_marginTop="25dp"
-        android:background="@color/white" />
+        android:layout_marginTop="25dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/set_daily_reminder_button"
@@ -36,10 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/time_picker"
         android:layout_centerInParent="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="34dp"
         android:background="@drawable/button"
         android:text="Set Reminder"
-        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18dp" />
 
@@ -52,7 +53,6 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button"
         android:text="Cancel Reminder"
-        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18dp" />
 

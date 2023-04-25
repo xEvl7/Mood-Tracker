@@ -147,6 +147,7 @@
         <ImageView
             android:layout_width="37dp"
             android:layout_height="29dp"
+            android:layout_marginRight="10dp"
             android:src="@drawable/pinlock" />
 
         <TextView

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +30,24 @@ public class pinLockSettings extends AppCompatActivity {
     private DatabaseReference userRef;
     private String pin = "";
 
+    private ImageView backSettingsButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pin_lock_settings);
+
+        backSettingsButton = findViewById(R.id.backSettings);
+
+        backSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Settings.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        });
 
         auth = FirebaseAuth.getInstance();
         pinView = findViewById(R.id.pinView);

@@ -1,5 +1,6 @@
 package my.edu.utar.moodtracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import my.edu.utar.moodtracker.utils.Shared;
 
 import java.io.ByteArrayOutputStream;
@@ -24,6 +33,13 @@ public class pickMood extends AppCompatActivity {
     TextView tv;
     TextView tv2;
     TextView tv3;
+    TextView tv4;
+
+    FirebaseAuth auth;
+    FirebaseUser user;
+    private DatabaseReference rootRef;
+    private DatabaseReference userRef;
+    private String pin = "",username;
 
     //Emoji Variable
     private ImageView happyFace;
@@ -46,6 +62,11 @@ public class pickMood extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_mood);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        rootRef = FirebaseDatabase.getInstance("https://userauthorisation-300e8-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
+        userRef = rootRef.child("Users");
 
         Shared.initialize(getBaseContext());
 
@@ -74,10 +95,12 @@ public class pickMood extends AppCompatActivity {
 
         tv2 = findViewById(R.id.textView);
         tv3 = findViewById(R.id.textViewHello);
+        tv4 = findViewById(R.id.textViewHelloText);
 
         tv.setTypeface(Shared.fontRegular);
         tv2.setTypeface(Shared.fontLight);
         tv3.setTypeface(Shared.fontLight);
+        tv4.setTypeface(Shared.fontLight);
 
         //Click Emoji
         happyFace = findViewById(R.id.happyEmoji);
@@ -188,6 +211,18 @@ public class pickMood extends AppCompatActivity {
             showToast("Is something not going well?");
             jumpToDiaryPage(byteArray);
         });
+
+        userRef.child(user.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange( @NonNull DataSnapshot snapshot) {
+                        username = snapshot.child("username").getValue().toString();
+                        tv3.append(username+" !!!");
+                    }
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(pickMood.this,"Database Error",Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 

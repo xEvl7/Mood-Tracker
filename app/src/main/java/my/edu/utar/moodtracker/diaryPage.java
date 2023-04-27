@@ -11,6 +11,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -39,7 +43,6 @@ import java.util.List;
 public class diaryPage extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-    private Uri mImageUri;
     private EditText titleDiary;
     private EditText contentDiary;
 
@@ -392,19 +395,30 @@ public class diaryPage extends AppCompatActivity {
 
             Uri uri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
 
-                // resize bitmap
-                int nh = (int) ( bitmap.getHeight() * (512.0 / bitmap.getWidth()) );
-                Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 512, nh, true);
+                Bitmap originalBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 570, 520, false);
 
-                // add image to diary page EditText
+                Bitmap frameBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.diaryframe);
+                Bitmap resizedFrameBitmap = Bitmap.createScaledBitmap(frameBitmap, 600, 600, false);
+
+                Bitmap finalBitmap = Bitmap.createBitmap(resizedFrameBitmap.getWidth(), resizedFrameBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+                Canvas canvas = new Canvas(finalBitmap);
+                canvas.drawBitmap(resizedFrameBitmap, 0, 0, null);
+                Rect rect = new Rect(115, 70, 485, 450);
+                canvas.drawBitmap(resizedBitmap, null, rect, null);
+
+                /*Drawable drawable = new BitmapDrawable(getResources(), finalBitmap);
+                contentDiary.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);*/
+
                 int selectionStart = contentDiary.getSelectionStart();
                 contentDiary.getText().insert(selectionStart, "\n");
                 selectionStart = contentDiary.getSelectionStart();
                 contentDiary.getText().insert(selectionStart, " ");
                 selectionStart = contentDiary.getSelectionStart();
-                ImageSpan imageSpan = new ImageSpan(this, scaled, ImageSpan.ALIGN_BOTTOM);
+
+                ImageSpan imageSpan = new ImageSpan(this, finalBitmap, ImageSpan.ALIGN_BOTTOM);
                 SpannableStringBuilder builder = new SpannableStringBuilder(contentDiary.getText());
                 builder.setSpan(imageSpan, selectionStart-1, selectionStart, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 contentDiary.setText(builder);

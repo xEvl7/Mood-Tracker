@@ -64,7 +64,7 @@
             android:id="@+id/changeUsername"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/arrow" />
     </LinearLayout>
 
@@ -113,17 +113,20 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/password"
-            android:layout_marginRight="155dp"
+            android:layout_marginRight="100dp"
             android:textSize="17sp"
             android:textStyle="italic" />
+
         <TextView
             android:id="@+id/passwordShow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:layout_marginLeft="10dp"
             android:textSize="17sp"
             android:textStyle="italic" />
+
         <ImageView
             android:id="@+id/changePassword"
             android:layout_width="30dp"

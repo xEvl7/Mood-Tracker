@@ -99,7 +99,7 @@ public class changePassword extends AppCompatActivity {
                         String oldPasswordFireBased = snapshot.getValue(String.class);
                         if (oldPassword.equals(oldPasswordFireBased)) {
                             userRef.child(user.getUid()).child("password").setValue(newPassword); // set new password
-                            Toast.makeText(changePassword.this, "Username is updated.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(changePassword.this, "Password is updated.", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
                             startActivity(intent);
                             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

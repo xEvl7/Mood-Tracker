@@ -176,9 +176,15 @@ public class diaryPage extends AppCompatActivity {
                 case R.id.item1:
                     mp.start();
                     //insert picture
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    /*Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     //startActivity(intent);
-                    startActivityForResult(intent, PICK_IMAGE_REQUEST);
+                    startActivityForResult(intent, PICK_IMAGE_REQUEST);*/
+
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
                     return true;
@@ -383,30 +389,29 @@ public class diaryPage extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            mImageUri = data.getData();
 
-            // Get the image file path from the URI
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(mImageUri, filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String imagePath = cursor.getString(columnIndex);
-            cursor.close();
+            Uri uri = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
 
-            // Insert the image into the diary page text field
-            if (contentDiary != null) {
-                SpannableStringBuilder builder = new SpannableStringBuilder();
-                builder.append(contentDiary.getText());
-                builder.append("\n");
+                // resize bitmap
+                int nh = (int) ( bitmap.getHeight() * (512.0 / bitmap.getWidth()) );
+                Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 512, nh, true);
 
-                Drawable drawable = Drawable.createFromPath(imagePath);
-                if (drawable != null) {
-                    int size = Math.max(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-                    drawable.setBounds(0, 0, size, size);
-                    builder.setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BOTTOM), builder.length() - 1, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                }
-
+                // add image to diary page EditText
+                int selectionStart = contentDiary.getSelectionStart();
+                contentDiary.getText().insert(selectionStart, "\n");
+                selectionStart = contentDiary.getSelectionStart();
+                contentDiary.getText().insert(selectionStart, " ");
+                selectionStart = contentDiary.getSelectionStart();
+                ImageSpan imageSpan = new ImageSpan(this, scaled, ImageSpan.ALIGN_BOTTOM);
+                SpannableStringBuilder builder = new SpannableStringBuilder(contentDiary.getText());
+                builder.setSpan(imageSpan, selectionStart-1, selectionStart, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 contentDiary.setText(builder);
+                contentDiary.setSelection(selectionStart);
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

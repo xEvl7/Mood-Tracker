@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -98,16 +100,23 @@ public class changePassword extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String oldPasswordFireBased = snapshot.getValue(String.class);
                         if (oldPassword.equals(oldPasswordFireBased)) {
-                            userRef.child(user.getUid()).child("password").setValue(newPassword); // set new password
-                            Toast.makeText(changePassword.this, "Password is updated.", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
-                            startActivity(intent);
-                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                            finish();
+                            user.updatePassword(newPasswordRt).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(changePassword.this, "Password is updated.", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(), my.edu.utar.moodtracker.AccountInformation.class);
+                                        startActivity(intent);
+                                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(changePassword.this, "Failed to update password.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
 
                         } else {
                             Toast.makeText(changePassword.this, "The old password not matched.", Toast.LENGTH_SHORT).show();
-                            editTextOldPassword.requestFocus();
                             return;
                         }
                     }

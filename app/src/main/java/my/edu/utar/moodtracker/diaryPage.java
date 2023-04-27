@@ -1,5 +1,6 @@
 package my.edu.utar.moodtracker;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -10,9 +11,17 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,11 +32,14 @@ import my.edu.utar.moodtracker.utils.Shared;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class diaryPage extends AppCompatActivity {
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Uri mImageUri;
     private EditText titleDiary;
     private EditText contentDiary;
 
@@ -79,6 +91,8 @@ public class diaryPage extends AppCompatActivity {
         emojiImage.setImageBitmap(bitmap);
 
         String selectedDate = getIntent().getStringExtra("selectedDate");
+
+        BottomNavigationView bottomView = findViewById(R.id.bottomNavigationView2);
 
         backSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,9 +169,6 @@ public class diaryPage extends AppCompatActivity {
                     "Loaded! Here is your record...\nMy Friend!\nNow you can edit it!",
                     Toast.LENGTH_SHORT).show();
 
-
-/*        BottomNavigationView bottomView = findViewById(R.id.bottomNavigationView2);
-
         //bottom navigation for 1.Insert picture button 2.Emoji & Sticker button
         bottomView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -166,9 +177,11 @@ public class diaryPage extends AppCompatActivity {
                     mp.start();
                     //insert picture
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivity(intent);
+                    //startActivity(intent);
+                    startActivityForResult(intent, PICK_IMAGE_REQUEST);
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    //return true;
+
+                    return true;
 
                 case R.id.item2:
                     mp.start();
@@ -178,7 +191,7 @@ public class diaryPage extends AppCompatActivity {
                 default:
                     return false;
             }
-        });*/
+        });
 
         saveAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -363,5 +376,38 @@ public class diaryPage extends AppCompatActivity {
 
         }
         return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            mImageUri = data.getData();
+
+            // Get the image file path from the URI
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(mImageUri, filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String imagePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            // Insert the image into the diary page text field
+            if (contentDiary != null) {
+                SpannableStringBuilder builder = new SpannableStringBuilder();
+                builder.append(contentDiary.getText());
+                builder.append("\n");
+
+                Drawable drawable = Drawable.createFromPath(imagePath);
+                if (drawable != null) {
+                    int size = Math.max(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+                    drawable.setBounds(0, 0, size, size);
+                    builder.setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BOTTOM), builder.length() - 1, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+
+                contentDiary.setText(builder);
+            }
+        }
     }
 }

@@ -42,7 +42,9 @@ public class SummaryPage extends AppCompatActivity {
     private SQLiteDatabase database;
     LineChart weekLineChart;
     private ArrayList<Entry> diarydata = null;
-    int[] colorClassArray = new int[]{Color.LTGRAY,Color.BLUE,Color.CYAN,Color.DKGRAY,Color.GREEN,Color.MAGENTA,Color.RED};
+//    int[] colorClassArray = new int[]{Color.LTGRAY,Color.BLUE,Color.CYAN,Color.DKGRAY,Color.GREEN,Color.MAGENTA,Color.RED};
+    final int[] pieColor ={Color.rgb(241, 148, 138),Color.rgb(195, 155, 211 ),
+            Color.rgb(133, 193, 233 ),Color.rgb(121, 134, 203),Color.rgb(118, 215, 196 ),Color.rgb(247, 220, 111 ),Color.rgb(248, 196, 113 )};
 
     PieChart totalEmojiChart;
     private ArrayList<PieEntry> numEmoji = null;
@@ -94,7 +96,7 @@ public class SummaryPage extends AppCompatActivity {
 
     private void getWeekSum(){
         weekLineChart = findViewById(R.id.line_chart);
-        weekLineChart.setBackgroundColor(Color.WHITE);
+        //weekLineChart.setBackgroundColor(Color.WHITE);
         //listView = findViewById(R.id.listView);
         dbHelper = new DiaryDBHelper(this);
         database = dbHelper.getWritableDatabase();
@@ -207,7 +209,7 @@ public class SummaryPage extends AppCompatActivity {
 
     private void getMonthEmojiSum() {
         totalEmojiChart = findViewById(R.id.piechart);
-        totalEmojiChart.setBackgroundColor(Color.WHITE);
+        //totalEmojiChart.setBackgroundColor(Color.WHITE);
         totalEmojiChart.setNoDataText("No Data");
         String[] pieCol = new String[]{Diary.DiaryEntry.COLUMN_SELECTED_EMOJI};
         String sortOrder = Diary.DiaryEntry.COLUMN_SELECTED_DATE +" DESC";
@@ -257,7 +259,10 @@ public class SummaryPage extends AppCompatActivity {
         cursor.close();
 
         PieDataSet totalEmojiDataSet = new PieDataSet(numEmoji," ");
-        totalEmojiDataSet.setColors(colorClassArray);
+        //set and add color
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+        for(int c: pieColor) colors.add(c);
+        totalEmojiDataSet.setColors(colors);
 
         totalEmojiDataSet.setValueLinePart1OffsetPercentage(80f);
         totalEmojiDataSet.setValueLineColor(Color.LTGRAY);

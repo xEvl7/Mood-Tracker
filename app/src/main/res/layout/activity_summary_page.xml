@@ -46,7 +46,8 @@
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/line_chart"
             android:layout_width="match_parent"
-            android:layout_height="400dp" />
+            android:layout_height="400dp"
+            android:background="@drawable/sum_background"/>
 
         <TextView
             android:id="@+id/tv3"
@@ -61,7 +62,8 @@
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart"
             android:layout_width="match_parent"
-            android:layout_height="550dp" />
+            android:layout_height="550dp"
+            android:background="@drawable/sum_background"/>
 
         <TextView
             android:id="@+id/tv4"

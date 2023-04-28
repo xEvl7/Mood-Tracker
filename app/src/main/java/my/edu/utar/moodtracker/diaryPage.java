@@ -332,12 +332,11 @@ public class diaryPage extends AppCompatActivity {
                         }
 
                     }
+                    Intent intent = new Intent(diaryPage.this, mainPage.class);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
                 }
-
-                Intent intent = new Intent(diaryPage.this, mainPage.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                finish();
             }
         });
 

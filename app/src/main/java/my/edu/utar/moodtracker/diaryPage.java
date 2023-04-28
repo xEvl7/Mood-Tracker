@@ -19,13 +19,16 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ImageSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,6 +39,7 @@ import my.edu.utar.moodtracker.utils.Shared;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +47,13 @@ import java.util.List;
 public class diaryPage extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
+    private byte[] pictureData;
+    private byte[] loadPictureByte;
+    //private List<Integer> picturePosition;
     private EditText titleDiary;
     private EditText contentDiary;
+
+    private MotionEvent longPressEvent = null;
 
     private AppCompatButton saveAll;
     private AppCompatButton deleteAll;
@@ -115,7 +124,8 @@ public class diaryPage extends AppCompatActivity {
                 Diary.DiaryEntry.COLUMN_TITLE,
                 Diary.DiaryEntry.COLUMN_CONTENT,
                 Diary.DiaryEntry.COLUMN_SELECTED_DATE,
-                Diary.DiaryEntry.COLUMN_SELECTED_EMOJI
+                Diary.DiaryEntry.COLUMN_SELECTED_EMOJI,
+                Diary.DiaryEntry.COLUMN_PICTURE
         };
 
         String selection = null;
@@ -124,9 +134,9 @@ public class diaryPage extends AppCompatActivity {
         String sortOrder =
                 Diary.DiaryEntry.COLUMN_SELECTED_DATE + " DESC";
 
-        try (SQLiteDatabase db = dbHelper.getReadableDatabase()) {
+        try (SQLiteDatabase db4 = dbHelper.getReadableDatabase()) {
 
-            Cursor cursor = db.query(
+            Cursor cursor = db4.query(
                     Diary.DiaryEntry.TABLE_NAME,                // The table to query
                     projection,                                 // The columns to return
                     selection,                                  // The columns for the WHERE clause
@@ -148,12 +158,46 @@ public class diaryPage extends AppCompatActivity {
                         cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_TITLE));
                 String content = cursor.getString(
                         cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_CONTENT));
+                byte[] pictureByte = cursor.getBlob(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_PICTURE));
+                /*int picturePosition = cursor.getInt(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_PICTURE_POSITION));*/
 
                 if (dateStr.equals(selectedDate)) {
-                    DiaryEXIST = true;
-                    titleDiary.setText(title);
-                    contentDiary.setText(content);
-                    break;
+
+                    if(pictureByte == null) { // no picture
+
+                        DiaryEXIST = true;
+                        titleDiary.setText(title);
+                        contentDiary.setText(content);
+
+                        break;
+                    }
+                    else { // got picture
+
+                        DiaryEXIST = true;
+                        titleDiary.setText(title);
+                        contentDiary.setText(content);
+
+                        loadPictureByte = pictureByte; //save the loaded picture into global variable
+
+                        Bitmap picture = BitmapFactory.decodeByteArray(pictureByte, 0, pictureByte.length);
+
+                        /*ImageSpan imageSpan = new ImageSpan(this, picture, ImageSpan.ALIGN_BASELINE);
+
+                        SpannableStringBuilder builder = new SpannableStringBuilder(contentDiary.getText());
+                        builder.append(" ");
+                        if (builder.length() > 0) {
+                            builder.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE); // Insert the image at position 0
+                        }
+                        contentDiary.setText(builder);*/
+
+                        Drawable drawable = new BitmapDrawable(getResources(), picture);
+                        contentDiary.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+
+                        break;
+                    }
+
                 }
                 else
                     DiaryEXIST = false;
@@ -179,10 +223,6 @@ public class diaryPage extends AppCompatActivity {
                 case R.id.item1:
                     mp.start();
                     //insert picture
-                    /*Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    //startActivity(intent);
-                    startActivityForResult(intent, PICK_IMAGE_REQUEST);*/
-
                     Intent intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -226,7 +266,7 @@ public class diaryPage extends AppCompatActivity {
 
                     boolean DiaryEXIST = getDiaryEXIST(selectedDate);
 
-                    if(DiaryEXIST == false) {
+                    if(DiaryEXIST == false) { //diary not exist
                         Toast.makeText(diaryPage.this,
                                 "New record will be saved...\nMy Friend!", Toast.LENGTH_SHORT).show();
 
@@ -237,6 +277,7 @@ public class diaryPage extends AppCompatActivity {
                         values.put(Diary.DiaryEntry.COLUMN_SELECTED_EMOJI, selectedEmoji);
                         values.put(Diary.DiaryEntry.COLUMN_TITLE, diaryTitle);
                         values.put(Diary.DiaryEntry.COLUMN_CONTENT, diaryContent);
+                        values.put(Diary.DiaryEntry.COLUMN_PICTURE, pictureData); //save new pic data
 
                         long newRowId = db.insert(Diary.DiaryEntry.TABLE_NAME, null, values);
 
@@ -255,12 +296,12 @@ public class diaryPage extends AppCompatActivity {
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
 
-                    } else {
+                    } else { //diary exist
 
                         Toast.makeText(diaryPage.this,
                                 "Your record already exist!\nUpdate your record...\nMy Friend!",
                                 Toast.LENGTH_SHORT).show();
-                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        SQLiteDatabase db2 = dbHelper.getWritableDatabase();
 
                         ContentValues values = new ContentValues();
                         //values.put(Diary.DiaryEntry.COLUMN_SELECTED_DATE, selectedDate);
@@ -268,8 +309,17 @@ public class diaryPage extends AppCompatActivity {
                         values.put(Diary.DiaryEntry.COLUMN_TITLE, diaryTitle);
                         values.put(Diary.DiaryEntry.COLUMN_CONTENT, diaryContent);
 
-                        String strFilter = "date='" + selectedDate +"'";
-                        long newRowId = db.update(Diary.DiaryEntry.TABLE_NAME, values, strFilter, null);
+                        if (loadPictureByte == null) { // originally no picture
+                            values.put(Diary.DiaryEntry.COLUMN_PICTURE, pictureData);
+                        } else { //originally got picture
+                            if(loadPictureByte == pictureData) //but user did not change the picture
+                                values.put(Diary.DiaryEntry.COLUMN_PICTURE, loadPictureByte);
+                            else //but user changed the picture
+                                values.put(Diary.DiaryEntry.COLUMN_PICTURE, pictureData);
+                        }
+
+                        String strFilter = "date='" + selectedDate + "'";
+                        long newRowId = db2.update(Diary.DiaryEntry.TABLE_NAME, values, strFilter, null);
 
                         if (newRowId == -1) {
                             Toast.makeText(diaryPage.this,
@@ -281,14 +331,13 @@ public class diaryPage extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        Intent intent = new Intent(diaryPage.this, mainPage.class);
-                        startActivity(intent);
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        finish();
                     }
-
                 }
 
+                Intent intent = new Intent(diaryPage.this, mainPage.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
             }
         });
 
@@ -330,6 +379,46 @@ public class diaryPage extends AppCompatActivity {
                 }
             }
         });
+
+        contentDiary.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                Drawable[] drawables = contentDiary.getCompoundDrawables();
+                if (drawables[1] != null) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            longPressEvent = MotionEvent.obtain(event);
+                            break;
+                        case MotionEvent.ACTION_CANCEL:
+                        case MotionEvent.ACTION_UP:
+                            longPressEvent = null;
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
+
+        contentDiary.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) {
+                Drawable[] drawables = contentDiary.getCompoundDrawables();
+                if (drawables[1] != null) {
+                    MotionEvent event = MotionEvent.obtain(longPressEvent);
+                    float x = event.getX();
+                    if (x > drawables[1].getBounds().right) {
+                        // User clicked outside the drawable bounds
+                        return false;
+                    } else {
+                        // User clicked on the drawable
+                        contentDiary.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+                        longPressEvent = null;
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+
     }
 
     boolean getDiaryEXIST(String selectedDate) {
@@ -340,7 +429,8 @@ public class diaryPage extends AppCompatActivity {
                 Diary.DiaryEntry.COLUMN_TITLE,
                 Diary.DiaryEntry.COLUMN_CONTENT,
                 Diary.DiaryEntry.COLUMN_SELECTED_DATE,
-                Diary.DiaryEntry.COLUMN_SELECTED_EMOJI
+                Diary.DiaryEntry.COLUMN_SELECTED_EMOJI,
+                Diary.DiaryEntry.COLUMN_PICTURE
         };
 
         String selection = null;
@@ -373,6 +463,8 @@ public class diaryPage extends AppCompatActivity {
                         cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_TITLE));
                 String content = cursor.getString(
                         cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_CONTENT));
+                byte[] pictureData = cursor.getBlob(
+                        cursor.getColumnIndexOrThrow(Diary.DiaryEntry.COLUMN_PICTURE));
 
                 if (dateStr.equals(selectedDate)) {
                     return true;
@@ -409,9 +501,10 @@ public class diaryPage extends AppCompatActivity {
                 Rect rect = new Rect(115, 70, 485, 450);
                 canvas.drawBitmap(resizedBitmap, null, rect, null);
 
-                /*Drawable drawable = new BitmapDrawable(getResources(), finalBitmap);
-                contentDiary.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);*/
+                Drawable drawable = new BitmapDrawable(getResources(), finalBitmap);
+                contentDiary.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
 
+                /*//need to handle if selection cursor is in titleDiary then will wrong
                 int selectionStart = contentDiary.getSelectionStart();
                 contentDiary.getText().insert(selectionStart, "\n");
                 selectionStart = contentDiary.getSelectionStart();
@@ -422,7 +515,12 @@ public class diaryPage extends AppCompatActivity {
                 SpannableStringBuilder builder = new SpannableStringBuilder(contentDiary.getText());
                 builder.setSpan(imageSpan, selectionStart-1, selectionStart, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 contentDiary.setText(builder);
-                contentDiary.setSelection(selectionStart);
+                contentDiary.setSelection(selectionStart);*/
+
+                // Convert the bitmap to a byte array
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                pictureData = stream.toByteArray();
 
             } catch (IOException e) {
                 e.printStackTrace();

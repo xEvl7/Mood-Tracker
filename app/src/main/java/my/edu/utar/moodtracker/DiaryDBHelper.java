@@ -15,7 +15,8 @@ public class DiaryDBHelper extends SQLiteOpenHelper {
                     Diary.DiaryEntry.COLUMN_SELECTED_DATE + " TEXT NOT NULL, " +
                     Diary.DiaryEntry.COLUMN_SELECTED_EMOJI + " TEXT NOT NULL, " +
                     Diary.DiaryEntry.COLUMN_TITLE + " TEXT NOT NULL, " +
-                    Diary.DiaryEntry.COLUMN_CONTENT + " TEXT NOT NULL)";
+                    Diary.DiaryEntry.COLUMN_CONTENT + " TEXT NOT NULL," +
+                    Diary.DiaryEntry.COLUMN_PICTURE + " BLOB)";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + Diary.DiaryEntry.TABLE_NAME;

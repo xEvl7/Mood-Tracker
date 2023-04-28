@@ -6,10 +6,6 @@
         android:title="@string/diary_menu_picture"
         android:icon="@drawable/ic_picture"/>
 
-    <item
-        android:id="@+id/item2"
-        android:title="@string/diary_menu_emoji"
-        android:icon="@drawable/ic_emoji"/>
 
 
 </menu>
